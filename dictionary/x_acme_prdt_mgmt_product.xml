@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Product" max_length="40" name="x_acme_prdt_mgmt_product" type="collection">
+        <element label="Availability" max_length="40" name="availability" read_only="true" type="string"/>
+        <element label="maker" max_length="40" name="maker" type="string"/>
+        <element label="model" max_length="40" name="model" type="string"/>
+    </element>
+</database>

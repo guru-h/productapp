@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Query inventory table and set availability</description>
+        <field>availability</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>check inventory</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	var ga = new GlideAjax('x_acme_prdt_mgmt.CheckInventory');
+	ga.addParam('sysparm_name','getResults');
+	ga.addParam('sysparm_maker', g_form.getValue('maker'));
+	ga.addParam('sysparm_model', g_form.getValue('model'));
+	ga.getXML(showCount);
+}
+
+function showCount(response) {
+	var answer = response.responseXML.documentElement.getAttribute("answer");
+	var count = parseInt(JSON.parse(answer).count);
+	var msg = (count < 0)? "Unable to check": count + ' units available';
+    g_form.setValue('availability', msg);
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>nikhil.bendre</sys_created_by>
+        <sys_created_on>2018-05-04 23:31:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5a272eb613b913007ebd35eed144b0d1</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>check inventory</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Product Management" source="x_acme_prdt_mgmt">7ca626b613b913007ebd35eed144b086</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Product Management">7ca626b613b913007ebd35eed144b086</sys_scope>
+        <sys_update_name>sys_script_client_5a272eb613b913007ebd35eed144b0d1</sys_update_name>
+        <sys_updated_by>nikhil.bendre</sys_updated_by>
+        <sys_updated_on>2018-05-04 23:46:56</sys_updated_on>
+        <table>x_acme_prdt_mgmt_product</table>
+        <type>onLoad</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
