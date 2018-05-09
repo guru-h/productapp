@@ -16,7 +16,7 @@
         <sys_updated_by>nikhil.bendre</sys_updated_by>
         <sys_updated_on>2018-05-04 23:49:33</sys_updated_on>
         <target_name>x_acme_invtry_mgmt_inventory</target_name>
-        <target_scope display_value="Inventory Management">9ae5e67613b913007ebd35eed144b0f8</target_scope>
+        <target_scope/>
         <target_type>sys_db_object</target_type>
     </sys_scope_privilege>
 </record_update>
